@@ -42,12 +42,17 @@ void let_stable_unique(A& a) {
   a.erase(stable_unique(a.begin(), a.end()), a.end());
 }
 
+string nullable_safe(char const* s) {
+  if (s) return string{s};
+  return {};
+}
+
 string name(DCSDictionaryRef dict_ref) {
-  return [DCSDictionaryGetName(dict_ref) UTF8String];
+  return nullable_safe([DCSDictionaryGetName(dict_ref) UTF8String]);
 }
 
 string short_name(DCSDictionaryRef dict_ref) {
-  return [DCSDictionaryGetShortName(dict_ref) UTF8String];
+  return nullable_safe([DCSDictionaryGetShortName(dict_ref) UTF8String]);
 }
 
 map<string, DCSDictionaryRef> const& available_dictionaries() {
