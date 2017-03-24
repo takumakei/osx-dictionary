@@ -132,7 +132,7 @@ list<string> dictionaries_from_env() {
       dictionaries.emplace_back(move(short_name));
     }
   }
-  return move(dictionaries);
+  return dictionaries;
 }
 
 enum struct output_format {
